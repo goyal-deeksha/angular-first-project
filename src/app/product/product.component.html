@@ -1,0 +1,10 @@
+<div class="actions product-table">
+    <span class="mr-4">{{product.name}}</span>
+    <span>{{product.price}}</span>
+    <span>{{product.quantity}}</span>
+    <span>
+        <button (click)="decreaseQuantity()" class="btn btn-sm btn-primary">-</button>
+        <button (click)="increaseQuantity()" class="btn btn-sm btn-primary">+</button>
+    </span>
+    <span><button (click)="addToCart()">Add to cart</button></span>
+</div>
