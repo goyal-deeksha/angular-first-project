@@ -14,9 +14,21 @@ export class CartComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.cartService.cart.subscribe((p: Product) => {
-      this.products.push(p);
+    this.cartService.cart.subscribe((p: Product[]) => {
+      this.products = p;
     })
+  }
+
+  increaseQuantity(id: number) {
+    this.cartService.increaseQuantity(id);
+  }
+
+  decreaseQuantity(id:number) {
+    this.cartService.decreaseQuantity(id);
+  }
+
+  removeItem(id:number) {
+    this.cartService.removeProductFromCart(id);
   }
 
 }

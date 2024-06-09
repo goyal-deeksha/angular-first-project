@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from './product.module';
 import { CartService } from '../cart/cart.service';
+import { Products } from '../products';
 
 @Component({
   selector: 'app-product',
@@ -8,23 +9,27 @@ import { CartService } from '../cart/cart.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  @Input() product!: Product;
+  products: Product[] = Products;
   constructor(private cartService: CartService) {
    }
 
   ngOnInit(): void {
   }
 
-  increaseQuantity() {
-    this.product.quantity++;
+  increaseQuantity(id: number) {
+    let idx = this.products.findIndex((p:Product) => p.id === id);
+    this.products[idx].quantity++;
   }
 
-  decreaseQuantity() {
-    this.product.quantity--;
+  decreaseQuantity(id:number) {
+    let idx = this.products.findIndex((p:Product) => p.id === id);
+    if (this.products[idx].quantity > 0) {
+      this.products[idx].quantity--;
+    }
   }
 
-  addToCart() {
-    this.cartService.addProductToCart(this.product)
+  addToCart(product: Product) {
+    this.cartService.addProductToCart({...product, quantity: 1})
   }
 
 }

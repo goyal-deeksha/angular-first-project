@@ -1,12 +1,8 @@
-<div>
-    <h3>Products: </h3>
-    <ul>
-        <li *ngFor="let item of products">
-            <app-product [product]="item"></app-product>
-        </li>
-    </ul>
+<div class="container">
+    <a routerLink="/products" class="me-4">Products</a>
+    <span class="me-4 separator">|</span>
+    <a routerLink="/cart">Cart</a>
 </div>
 <div>
-    <h3>Cart: </h3>
-    <app-cart></app-cart>
+    <router-outlet></router-outlet>
 </div>

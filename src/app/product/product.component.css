@@ -12,3 +12,6 @@
 button {
     margin-right: 6px;
 }
+ul{
+    list-style-type: none;
+}

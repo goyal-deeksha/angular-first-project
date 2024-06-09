@@ -1,10 +1,13 @@
-<div class="actions product-table">
-    <span class="mr-4">{{product.name}}</span>
-    <span>{{product.price}}</span>
-    <span>{{product.quantity}}</span>
-    <span>
-        <button (click)="decreaseQuantity()" class="btn btn-sm btn-primary">-</button>
-        <button (click)="increaseQuantity()" class="btn btn-sm btn-primary">+</button>
-    </span>
-    <span><button (click)="addToCart()">Add to cart</button></span>
+<div>
+    <h3>Products: </h3>
+    <ul>
+        <li *ngFor="let product of products; track by product">
+            <div class="actions product-table">
+                <span class="mr-4">{{product.name}}</span>
+                <span>{{product.price}}</span>
+                <span>{{product.quantity}}</span>
+                <span><button class="btn btn-success" (click)="addToCart(product)">Add to cart</button></span>
+            </div>
+        </li>
+    </ul>
 </div>
